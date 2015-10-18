@@ -7,8 +7,8 @@ Big decisions to make
 ---------------------
 
 - passive or active trains?
-  - passive: simpler, kinda cooler
-  - active: more possibilities
+  - passive (no CPU, motor powered straight from the rails): simpler, kinda cooler
+  - active (motor controlled by an on-board CPU): more possibilities
 
 Notes
 -----
