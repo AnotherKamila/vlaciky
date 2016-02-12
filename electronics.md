@@ -17,19 +17,10 @@ Interakcia s okolitým svetom:
 
 Použité súčiastky:
 
-ATmega8 (DIP package)
-: 8bit mikrokontroler, má timer (použijem na PWM) a ADC (použijem na vstup z optického člena)
-
-Raspberry Pi controller
-: polarita napätia na koľajniciach riadená cez jeho GPIO
-
-zdroj
-: adaptér z notebooku -- výstup 16V DC, zrazím na 12V pomocou lineárneho regulátora
-
-L298N Multiwatt15 dual full-bridge driver
-: IC obsahujúci 2 H-mostíky ([datasheet](http://www.gme.sk/img/cache/doc/332/005/l298n-datasheet-1.pdf)) *(na schéme ozn. `MW15`)*
-
-CNY70 reflektívny optický senzor
-: fototranzistor s integrovanou IR LED ([datasheet](http://www.vishay.com/docs/83751/cny70.pdf))
+- **ATmega8 (DIP package)**: 8bit mikrokontroler, má timer (použijem na PWM) a ADC (použijem na vstup z optického člena)
+- **Raspberry Pi controller**: polarita napätia na koľajniciach riadená cez jeho GPIO
+- **zdroj**: adaptér z notebooku -- výstup 16V DC, zrazím na 12V pomocou lineárneho regulátora
+- **L298N Multiwatt15 dual full-bridge driver**: IC obsahujúci 2 H-mostíky ([datasheet](http://www.gme.sk/img/cache/doc/332/005/l298n-datasheet-1.pdf)) *(na schéme ozn. `MW15`)*
+- **CNY70 reflektívny optický senzor**: fototranzistor s integrovanou IR LED ([datasheet](http://www.vishay.com/docs/83751/cny70.pdf)) *(ozn. `CNY70`)*
 
 ![schéma](scheme.jpg)
