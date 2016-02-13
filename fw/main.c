@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "Csucks.h"
-#include "state.h"
+#include "state.h" // declares the `state` global
 #include "peripherals/all.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,6 +14,11 @@ void set_output(state_data state) {
     led_set_brightness(state.light >> 8);
     sei();
 }
+
+////////////////////////////////////////////////////////////////////////////////
+
+// TODO this probably belongs to state.[ch] -- make a set_state(state_data)
+// function and stuff
 
 // Must be >1 to avoid overflow down there.
 #define FORCE_K 256
