@@ -1,12 +1,19 @@
-#include <avr/interrupt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "Csucks.h"
 #include "state.h"
-#include "peripherals.h"
+#include "peripherals/all.h"
 
 ////////////////////////////////////////////////////////////////////////////////
+
+void set_output(state_data state) {
+    cli(); // let's say we want this to be atomic
+    motor_set_dir(state.speed < 0);
+    motor_set_speed((uint16_t)abs(state.speed) >> 8);
+    led_set_brightness(state.light >> 8);
+    sei();
+}
 
 // Must be >1 to avoid overflow down there.
 #define FORCE_K 256
@@ -14,7 +21,7 @@
 
 // Adjusts `x` towards `intended`, with some "stickiness/inertia".
 int32_t ease(int32_t x, int32_t intended, int32_t k) {
-    int32_t delta = (x - intended)/k;
+    int32_t delta = (intended - x)/k;
     return x + delta;
 }
 
@@ -36,9 +43,9 @@ void main_loop(void) {
 ////////////////////////////////////////////////////////////////////////////////
 
 void main(void) {
-    enable_all_peripherals();
+    all_peripherals_enable();
     sei();
 
-    state.speed = 255; state.light = 128;
+    state.speed = 0xefff; state.light = 0x8fff;
     main_loop();
 }
