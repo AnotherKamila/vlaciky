@@ -1,13 +1,9 @@
-#include "board.h"
+#include "peripherals.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 void enable_adc(void) {
-    // TODO
-}
-
-void enable_gpio(void) {
     // TODO
 }
 

@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef PERIPHERALS_H
+#define PERIPHERALS_H
 
 
 #include "Csucks.h"
