@@ -13,7 +13,9 @@ Interakcia s okolitým svetom:
     - značky v pravidelných rozostupoch umožnia zisťovať rýchlosť (a dá sa kombinovať s predošlým)
     - značky môžu nie len kódovať polohu, ale aj ľubovoľne meniť správanie -- dá sa spraviť zhruba čokoľvek
 
-- output: motor ovládaný H-bridge driverom (pripojený na PWM output) -- umožňuje pohyb ľubovoľnou rýchlosťou obomi smermi
+- output:
+  - motor ovládaný H-bridge driverom (pripojený na PWM output) -- umožňuje pohyb ľubovoľnou rýchlosťou obomi smermi
+  - predné svetlo: pre efekt i úžitok (debugging 1 LEDkou je super!)
 
 Použité súčiastky:
 

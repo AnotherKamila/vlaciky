@@ -1,43 +1,44 @@
-#include <avr/io.h>
+#include <avr/interrupt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "Csucks.h"
+#include "state.h"
+#include "board.h"
 
-#define FORCE_K 16
+////////////////////////////////////////////////////////////////////////////////
 
-enum state_type {
-    ST_STOP    = 1,
-    ST_FORWARD = 2,
-};
+// Must be >1 to avoid overflow down there.
+#define FORCE_K 256
+#define LIGHT_K 16
 
-volatile enum state_type state;  // may be changed from interrupts or whatever
+// Adjusts `x` towards `intended`, with some "stickiness/inertia".
+int32_t ease(int32_t x, int32_t intended, int32_t k) {
+    int32_t delta = (x - intended)/k;
+    return x + delta;
+}
 
-void state_machine(void) {
-    int16_t current_speed = 0;
-    int16_t intended_speed;
+#define INITIAL_REAL_STATE { .speed = 0, .light = 0 }
+
+// Transitions from the real current state to the intended state
+void main_loop(void) {
+    state_data real = INITIAL_REAL_STATE;
+    volatile state_data *intended = &state; // alias to that global
 
     while (1) {
-        switch (state) {
+        real.speed = ease(real.speed, intended->speed, FORCE_K);
+        real.light = ease(real.light, intended->light, LIGHT_K);
 
-            case ST_STOP:
-                intended_speed = 0;
-                break;
-
-            case ST_FORWARD:
-                intended_speed = 255;
-                break;
-        }
-
-        // adjust speed, simulating inertia (somehow...)
-        int16_t delta = (intended_speed - current_speed)/FORCE_K;
-        current_speed += delta;
-        // TODO write somewhere for PWM adjustment
+        set_output(real);
     }
 }
 
-int main(void) {
-    // TODO initialization of PWM and sensors and comm and whatever
-    state = ST_FORWARD;
-    state_machine();
+////////////////////////////////////////////////////////////////////////////////
+
+void main(void) {
+    enable_all_peripherals();
+    sei();
+
+    state.speed = 255; state.light = 128;
+    main_loop();
 }

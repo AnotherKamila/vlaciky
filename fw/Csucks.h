@@ -8,6 +8,7 @@
 // everybody wants these anyway
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #define intern    static // for use in file scope
 #define common    static // for use in function scope
