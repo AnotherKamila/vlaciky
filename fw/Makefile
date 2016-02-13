@@ -49,7 +49,7 @@ main-dbg.elf: $(SRCS) $(HDRS)
 sim: main-dbg.hex main-dbg.elf
 	simulavr -g -d $(MCU) -p $(SIM_GDB_PORT) main-dbg.hex &
 	avr-gdb --tui -ex "target remote localhost:$(SIM_GDB_PORT)" -ex "load" -ex "focus CMD" -ex "b main" ./main-dbg.elf
-	killall simavr
+	killall simulavr
 
 chip_erase:
 	avrdude -p $(AVRDUDE_MCU) -c $(AVRDUDE_PRG) -P $(AVRDUDE_PRG_PORT) -B $(AVRDUDE_BITCLOCK) -e
