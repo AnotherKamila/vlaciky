@@ -8,6 +8,7 @@
 #include "led.h"
 #include "pwm.h"
 #include "motor.h"
+#include "timers.h"
 
 void adc_enable(void);
 void comm_enable(void);

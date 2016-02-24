@@ -37,10 +37,11 @@ state get_state(void);
 
 // Get the current real state (which may be different from the intended state,
 // as we are simulating inertia and such.)
+state get_real_state(void);
 
-// Update the real state in response to the intended state, and return the real
-// state. Must be called in the main loop.
-state real_state_frame(void);
+// Update the real state in response to the intended state. Must be called in
+// regular intervals (e.g. from a timer).
+void real_state_frame(void);
 
 // "real real state" (what things look like when the device is turned on)
 #define INITIAL_REAL_STATE { .speed = 0, .light = 0 }

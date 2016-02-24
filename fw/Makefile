@@ -1,5 +1,5 @@
 MCU	  = atmega8
-F_CPU = 8000000
+F_CPU = 1000000
 
 AVRDUDE_MCU      = m8
 AVRDUDE_PRG	     = avrisp2

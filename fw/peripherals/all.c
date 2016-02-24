@@ -17,11 +17,10 @@ void optical_sensor_enable(void) {
     // TODO
 }
 
-
-
 void all_peripherals_enable(void) {
     comm_enable();
     optical_sensor_enable();
     motor_enable();
     led_enable();
+    timer2_enable();
 }
