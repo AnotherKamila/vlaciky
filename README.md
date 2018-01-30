@@ -3,6 +3,8 @@ Vláčiky!
 
 Layout plan, electronics and such for the model railroad in KSP room at our university.
 
+**I did not finish it while I was in the correct country, so it will probably never be finished.**
+
 The train has a microcontroller on board and therefore can do lots of fun stuff. See electronics.md.
 Notes
 -----
